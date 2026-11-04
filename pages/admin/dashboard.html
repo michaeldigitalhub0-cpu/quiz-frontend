@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard — Quiz Management System</title>
+    <link rel="stylesheet" href="../../css/setting.css" />
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/quiz.css" />
+</head>
+
+<body>
+    <div class="app-shell">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar__head">
+                <div class="sidebar__brand">Quiz<span>MS</span></div>
+                <a href="./settings.html" class="sidebar__settings" aria-label="Settings" title="Settings">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="12" cy="12" r="3" />
+                        <path
+                            d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
+                    </svg>
+                </a>
+            </div>
+
+            <p class="sidebar__section-label">Overview</p>
+            <ul class="sidebar__nav">
+                <li><a href="dashboard.html" class="sidebar__link is-active">Dashboard</a></li>
+            </ul>
+            <p class="sidebar__section-label">Management</p>
+            <ul class="sidebar__nav">
+                <li><a href="./hod.html" class="sidebar__link">HODs</a></li>
+                <li><a href="./instructor.html" class="sidebar__link">Instructors</a></li>
+                <li><a href="./student.html" class="sidebar__link">Students</a></li>
+            </ul>
+        </aside>
+
+        <header class="topbar">
+            <h2 class="topbar__title">Instructor Dashboard</h2>
+            <div class="topbar__user">
+                <span class="role-pill" id="userRole">Instructor</span>
+                <span id="userName">—</span>
+                <button class="btn btn-secondary btn-sm" id="logoutBtn">Log out</button>
+            </div>
+        </header>
+
+        <main class="main">
+            <div id="pageAlert"></div>
+            <section class="stat-grid">
+                <div class="stat-card">
+                    <div class="stat-card__value" id="statInstructors">—</div>
+                    <div class="stat-card__label">Instructors</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card__value" id="statHODs">—</div>
+                    <div class="stat-card__label">HODs</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card__value" id="statStudents">—</div>
+                    <div class="stat-card__label">Students</div>
+                </div>
+            </section>
+
+            <div class="form-actions" style="margin:-8px 0 20px;">
+                <a href="instructor.html" class="btn btn-primary btn-sm">Add Instructor</a>
+                <a href="hod.html" class="btn btn-primary btn-sm">Add HOD</a>
+                <a href="student.html" class="btn btn-primary btn-sm">Add Student</a>
+            </div>
+        </main>
+    </div>
+
+    <script type="module" src="../../js/auth.js"></script>
+    <script type="module" src="../../js/pages/admin/dashboard.js"></script>
+</body>
+
+</html>

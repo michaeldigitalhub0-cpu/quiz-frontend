@@ -1,0 +1,384 @@
+/* ---------- Sidebar head: brand + small settings icon ---------- */
+.sidebar {
+  overflow-y: auto;
+}
+
+.sidebar__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 0 14px 20px 0;
+  margin-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar__head .sidebar__brand {
+  padding-bottom: 0;
+  margin-bottom: 0;
+  border-bottom: 0;
+}
+
+.sidebar__settings {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  color: rgba(255, 255, 255, 0.7);
+  transition: background 0.15s, color 0.15s;
+}
+
+.sidebar__settings svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+.sidebar__settings:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.sidebar__settings.is-active {
+  color: var(--color-accent);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* ---------- Topbar ---------- */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+}
+
+.topbar__left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+/* ---------- Menu toggle button (drawn as SVG so it looks the same everywhere) ---------- */
+.nav-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-primary-dark);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.nav-toggle:hover {
+  background: var(--color-surface-alt);
+}
+
+.nav-toggle svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+  overflow: visible;
+}
+
+.nav-toggle line {
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+/* ---------- Desktop: sidebar collapses to give the page full width ---------- */
+.app-shell {
+  transition: grid-template-columns 0.2s ease;
+}
+
+.app-shell.nav-closed {
+  grid-template-columns: 0 1fr;
+}
+
+.app-shell.nav-closed .sidebar {
+  overflow: hidden;
+  padding: 0;
+  visibility: hidden;
+}
+
+.main {
+  min-width: 0;
+  /* lets wide tables scroll inside .table-wrap instead of stretching the page */
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+/* ---------- Backdrop behind the mobile drawer ---------- */
+.sidebar-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  background: rgba(18, 41, 77, 0.45);
+}
+
+/* ---------- Tablet and phone ---------- */
+@media (max-width: 860px) {
+  .app-shell.nav-closed {
+    grid-template-columns: 1fr;
+    /* ignore the desktop collapsed state */
+  }
+
+  .sidebar {
+    box-shadow: var(--shadow-md);
+  }
+
+  .sidebar-backdrop.is-visible {
+    display: block;
+  }
+
+  .nav-toggle {
+    width: 44px;
+    height: 44px;
+  }
+
+  /* the icon becomes an X only while the drawer is open */
+  .nav-toggle[aria-expanded="true"] line:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+  }
+
+  .nav-toggle[aria-expanded="true"] line:nth-child(2) {
+    opacity: 0;
+  }
+
+  .nav-toggle[aria-expanded="true"] line:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+  }
+
+  .topbar {
+    padding: 0 16px;
+  }
+
+  .main {
+    padding: 16px;
+  }
+
+  .topbar__user #userName {
+    display: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .form-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .table-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .table-toolbar input[type="search"] {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .form-actions {
+    flex-wrap: wrap;
+  }
+
+  .stat-grid {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  }
+
+  .data-table th,
+  .data-table td {
+    white-space: nowrap;
+  }
+
+  .modal-box {
+    max-width: calc(100% - 32px);
+  }
+
+  #update_box {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+
+  #ann_update_box {
+    padding: 20px;
+  }
+
+  #ann_update_box>#n_body {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .app-shell,
+  .sidebar,
+  .nav-toggle line {
+    transition: none;
+  }
+}
+
+
+/* =========================================================
+   PART 2 — SETTINGS PAGE
+   ========================================================= */
+
+/* Profile strip on top, details on the left, editable forms on the right */
+.settings-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+  max-width: 980px;
+}
+
+.settings-layout .card+.card {
+  margin-top: 0;
+  /* the grid gap handles spacing */
+}
+
+.settings-stack {
+  display: grid;
+  gap: 16px;
+}
+
+.profile-strip {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.profile-strip__avatar {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: #fff;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.profile-strip__text {
+  min-width: 0;
+}
+
+.profile-strip__name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.15rem;
+  color: var(--color-primary-dark);
+  overflow-wrap: anywhere;
+}
+
+.profile-strip__meta {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.settings-note {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin: -6px 0 16px;
+}
+
+.settings-details .form-grid {
+  grid-template-columns: minmax(0, 1fr);
+  /* one column keeps the locked fields easy to scan */
+}
+
+/* Read-only (disabled) inputs: clearly locked, still legible */
+.field input:disabled,
+.field select:disabled,
+.field textarea:disabled {
+  background: var(--color-surface-alt);
+  color: var(--color-text-muted);
+  border-style: dashed;
+  cursor: not-allowed;
+  opacity: 1;
+  -webkit-text-fill-color: var(--color-text-muted);
+  /* Safari / iOS */
+}
+
+.field input.col-id:disabled {
+  font-family: var(--font-mono);
+}
+
+/* Helper and validation text under inputs */
+.field__hint {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+.field__error:empty {
+  display: none;
+}
+
+.field--error input {
+  border-color: var(--color-danger);
+}
+
+.field--error input:focus {
+  box-shadow: 0 0 0 3px var(--color-danger-bg);
+}
+
+/* "Show passwords" row */
+.settings-toggle {
+  margin-top: 14px;
+}
+
+.settings-toggle__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+.settings-toggle__label input {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--color-primary);
+}
+
+@media (max-width: 900px) {
+  .settings-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .profile-strip {
+    gap: 12px;
+  }
+
+  .settings-layout .form-actions {
+    flex-direction: column;
+  }
+
+  .settings-layout .form-actions .btn {
+    width: 100%;
+    justify-content: center;
+    padding: 11px 16px;
+  }
+}

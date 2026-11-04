@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz Login — Quiz Management System</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+
+<body>
+  <div class="login-screen">
+    <form class="login-card" id="examLoginForm">
+      <div class="login-card__brand">Quiz<span>MS</span></div>
+      <div id="loginAlert"></div>
+
+      <div class="field">
+        <label for="studentId">Student ID</label>
+        <input type="text" id="studentID" maxlength="9" autocomplete="username" required />
+      </div>
+
+      <div class="field" style="margin-top:14px;">
+        <label for="password">Password</label>
+        <input type="password" id="password" autocomplete="current-password" required />
+      </div>
+
+      <div class="field" style="margin-top:14px;">
+        <label for="courseSelect">Select course</label>
+        <input type="search" id="courseSearch" placeholder="Search for quiz" autocomplete="off" />
+        <select id="quizSelect" required>
+          <option value="" disabled selected>Select a quiz</option>
+        </select>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary" id="startBtn" style="width:100%;justify-content:center;">Start
+          quiz</button>
+      </div>
+    </form>
+  </div>
+
+  <script type="module" src="../js/pages/exam-login.js"></script>
+</body>
+
+</html>

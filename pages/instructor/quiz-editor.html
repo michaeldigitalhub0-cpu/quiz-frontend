@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz Editor — Quiz Management System</title>
+  <link rel="stylesheet" href="../../css/setting.css" />
+  <link rel="stylesheet" href="../../css/style.css" />
+  <link rel="stylesheet" href="../../css/quiz.css" />
+</head>
+
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar__head">
+        <div class="sidebar__brand">Quiz<span>MS</span></div>
+        <a href="./settings.html" class="sidebar__settings" aria-label="Settings" title="Settings">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="3" />
+            <path
+              d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
+          </svg>
+        </a>
+      </div>
+      <p class="sidebar__section-label">Overview</p>
+      <ul class="sidebar__nav">
+        <li><a href="dashboard.html" class="sidebar__link">Dashboard</a></li>
+      </ul>
+      <p class="sidebar__section-label">Quizzes</p>
+      <ul class="sidebar__nav">
+        <li><a href="quiz-editor.html" class="sidebar__link is-active">New quiz</a></li>
+      </ul>
+    </aside>
+
+    <header class="topbar">
+      <h2 class="topbar__title">Quiz Editor</h2>
+      <div class="topbar__user">
+        <span class="role-pill" id="userRole">Instructor</span>
+        <span id="userName">—</span>
+        <button class="btn btn-secondary btn-sm" id="logoutBtn">Log out</button>
+      </div>
+    </header>
+
+    <main class="main">
+      <div id="pageAlert"></div>
+      <section class="card">
+        <div class="card__header">
+          <h3 style="margin:0;">Quiz details</h3>
+        </div>
+        <form id="quizForm">
+          <div class="form-grid">
+            <div class="field"><label for="quizCourse">Course</label><select id="quizCourse" required>
+                <option value="" disabled selected>Select course</option>
+              </select></div>
+            <div class="field"><label for="quizTitle">Quiz title</label><input type="text" id="quizTitle"
+                maxlength="100" required /></div>
+            <div class="field"><label for="quizDuration">Duration (minutes)</label><input type="number"
+                id="quizDuration" min="1" required /></div>
+          </div>
+
+          <div class="card__header">
+            <h3 style="margin-top: 14px;">Add a question</h3>
+          </div>
+          <div class="form-grid">
+            <div class="field field--wide"><label for="questionTextInput">Question</label><textarea
+                id="questionTextInput" required></textarea></div>
+            <div class="field"><label for="opt1">Option A</label><input type="text" id="opt1" maxlength="255"
+                required />
+            </div>
+            <div class="field"><label for="opt2">Option B</label><input type="text" id="opt2" maxlength="255"
+                required />
+            </div>
+            <div class="field"><label for="opt3">Option C (optional)</label><input type="text" id="opt3"
+                maxlength="255" />
+            </div>
+            <div class="field"><label for="opt4">Option D (optional)</label><input type="text" id="opt4"
+                maxlength="255" />
+            </div>
+            <div class="field"><label for="correctOption">Correct option</label><select id="correctOption" required>
+                <option value="" disabled selected>Select</option>
+                <option value="1">A</option>
+                <option value="2">B</option>
+                <option value="3">C</option>
+                <option value="4">D</option>
+              </select></div>
+            <div class="field"><label for="awardedPoint">Awarded Point</label><input type="number" id="awardedPoint"
+                value="1" required />
+            </div>
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Add question</button>
+            <button type="submit" class="btn btn-primary">Save quiz</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="card">
+        <div class="card__header">
+          <h3 style="margin:0;">Available Quizzes</h3>
+        </div>
+        <p class="note">Select a quiz view its questions. Once published, you cannot modify or delete quiz</p>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Title</th>
+                <th class="num">Duration(min)</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="quizBody">
+
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card__header">
+          <h3 style="margin:0;">Questions in this quiz</h3>
+        </div>
+        <p class="note">Questions cannot be edited or deleted once a student has attempted the quiz.</p>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Question</th>
+                <th class="num">Options</th>
+                <th>Correct</th>
+                <th>Awarded Point</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="questionBody">
+              <tr>
+                <td colspan="6">
+                  <div class="empty-state">No questions added yet.</div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script type="module" src="../../js/auth.js"></script>
+  <script type="module" src="../../js/pages/instructor/quiz-editor.js"></script>
+</body>
+
+</html>

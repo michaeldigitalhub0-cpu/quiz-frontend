@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz — Quiz Management System</title>
+  <link rel="stylesheet" href="../../css/style.css" />
+  <link rel="stylesheet" href="../../css/quiz.css" />
+</head>
+
+<body>
+  <header class="exam-bar">
+    <div>
+      <div class="exam-bar__title" id="quizTitle">—</div>
+      <div class="exam-bar__meta" id="quizCourse">—</div>
+    </div>
+    <div class="exam-timer" id="examTimer" role="timer">00:00:00</div>
+  </header>
+
+  <div id="examAlert"></div>
+  <main class="exam-layout">
+    <section class="card">
+      <div class="card__header">
+        <h3 style="margin:0;" id="questionNo">Question 1 of 1</h3>
+        <span class="card__meta" id="answeredCount">0 answered</span>
+      </div>
+      <div class="meter"><span class="meter__fill" id="progressFill" style="width:0%"></span></div>
+
+      <p class="question__text" id="questionText">—</p>
+
+      <fieldset class="options" style="border:0;padding:0;margin:0;" id="optionsList">
+        <legend class="note" style="padding:0;">Choose one answer</legend>
+        <label class="option"><input type="radio" name="answer" value="1" /><span class="option__key">A</span><span
+            id="optionText1">—</span></label>
+        <label class="option"><input type="radio" name="answer" value="2" /><span class="option__key">B</span><span
+            id="optionText2">—</span></label>
+        <label class="option"><input type="radio" name="answer" value="3" /><span class="option__key">C</span><span
+            id="optionText3">—</span></label>
+        <label class="option"><input type="radio" name="answer" value="4" /><span class="option__key">D</span><span
+            id="optionText4">—</span></label>
+      </fieldset>
+
+
+      <div class="exam-actions">
+        <button type="button" class="btn btn-secondary" id="prevBtn">Previous</button>
+        <button type="button" class="btn btn-primary" id="nextBtn">Next</button>
+      </div>
+
+
+    </section>
+
+    <aside class="card">
+      <div class="card__header">
+        <h3 style="margin:0;">Questions</h3>
+      </div>
+      <div class="palette" id="palette">
+        <button type="button" class="palette__btn is-current">1</button>
+        <button type="button" class="palette__btn is-answered">2</button>
+        <button type="button" class="palette__btn">3</button>
+        <button type="button" class="palette__btn">4</button>
+        <button type="button" class="palette__btn">5</button>
+      </div>
+      <div class="form-actions"><button type="button" class="btn btn-danger" id="submitBtn"
+          style="width:100%;justify-content:center;">Submit quiz</button></div>
+    </aside>
+  </main>
+
+  <div class="modal-overlay is-hidden" id="submitModal" role="dialog" aria-modal="true"
+    aria-labelledby="submitModalTitle">
+    <div class="modal-box modal-box--form">
+      <h3 class="modal-box__title" id="submitModalTitle">Submit your answers?</h3>
+      <p class="modal-box__subtitle" id="submitModalSub">You have unanswered questions.</p>
+      <p class="note">You cannot change your answers after submitting.</p>
+      <div class="form-actions"><button type="button" class="btn btn-danger" id="submitModalOk">Submit</button><button
+          type="button" class="btn btn-secondary" id="submitModalCancel">Keep working</button></div>
+    </div>
+  </div>
+  <script type="module" src="../../js/quiz_auth.js"></script>
+  <script type="module" src="../../js/pages/student/quiz.js"></script>
+</body>
+
+</html>

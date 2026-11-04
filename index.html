@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Redirecting to <a href="./pages/login.html">login</a> in <span>3</span> seconds ...</p>
+</body>
+<script>
+    setTimeout(() => {
+        let count = 3;
+        setInterval(() => {
+            document.querySelector('span').textContent = count--;
+        }, 1000);
+        window.location.href = './pages/login.html';
+    }, 3000)
+</script>
+
+</html>

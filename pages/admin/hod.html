@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Head of Department Quiz Management System</title>
+    <link rel="stylesheet" href="../../css/setting.css" />
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/quiz.css" />
+</head>
+
+<body>
+    <div class="app-shell">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar__head">
+                <div class="sidebar__brand">Quiz<span>MS</span></div>
+                <a href="./settings.html" class="sidebar__settings" aria-label="Settings" title="Settings">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="12" cy="12" r="3" />
+                        <path
+                            d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
+                    </svg>
+                </a>
+            </div>
+
+            <p class="sidebar__section-label">Overview</p>
+            <ul class="sidebar__nav">
+                <li><a href="dashboard.html" class="sidebar__link">Dashboard</a></li>
+            </ul>
+            <p class="sidebar__section-label">Management</p>
+            <ul class="sidebar__nav">
+                <li><a href="./hod.html" class="sidebar__link is-active">HODs</a></li>
+                <li><a href="./instructor.html" class="sidebar__link">Instructors</a></li>
+                <li><a href="./student.html" class="sidebar__link">Students</a></li>
+            </ul>
+        </aside>
+
+        <header class="topbar">
+            <h2 class="topbar__title">Head of Departments</h2>
+            <div class="topbar__user">
+                <span class="role-pill" id="userRole">Admin</span>
+                <span id="userName">—</span>
+                <button class="btn btn-secondary btn-sm" id="logoutBtn">Log out</button>
+            </div>
+        </header>
+
+        <main class="main">
+            <div id="pageAlert"></div>
+            <section class="card">
+                <div class="card__header">
+                    <h3 style="margin:0;">Add a Head</h3>
+                </div>
+                <form id="userForm">
+                    <div class="form-grid">
+                        <div class="field"><label for="uFirst">First name</label><input type="text" id="firstName"
+                                maxlength="15" required /></div>
+                        <div class="field"><label for="uMiddle">Middle name (optional)</label><input type="text"
+                                id="middleName" maxlength="15" /></div>
+                        <div class="field"><label for="uLast">Last name</label><input type="text" id="lastName"
+                                maxlength="15" required /></div>
+                        <div class="field"><label for="uEmail">Email</label><input type="email" id="userEmail"
+                                maxlength="100" required /></div>
+                    </div>
+                    <div class="form-actions"><button type="submit" class="btn btn-primary">Create user</button></div>
+                </form>
+            </section>
+
+            <section class="card">
+                <div class="table-toolbar">
+                    <h3 style="margin:0;">All HODs</h3><input type="search" id="hodSearch"
+                        placeholder="Search by name or email" />
+                </div>
+                <div class="table-wrap">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="hodBody">
+
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script type="module" src="../../js/auth.js"></script>
+    <script type="module" src="../../js/pages/admin/head.js"></script>
+</body>
+
+</html>

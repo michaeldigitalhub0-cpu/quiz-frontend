@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Quizzes — Quiz Management System</title>
+  <link rel="stylesheet" href="../../css/setting.css" />
+  <link rel="stylesheet" href="../../css/style.css" />
+  <link rel="stylesheet" href="../../css/quiz.css" />
+</head>
+
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar__head">
+        <div class="sidebar__brand">Quiz<span>MS</span></div>
+        <a href="./settings.html" class="sidebar__settings" aria-label="Settings" title="Settings">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="3" />
+            <path
+              d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
+          </svg>
+        </a>
+      </div>
+      <p class="sidebar__section-label">Overview</p>
+      <ul class="sidebar__nav">
+        <li><a href="./dashboard.html" class="sidebar__link is-active">Dashboard</a></li>
+        <li><a href="./courses.html" class="sidebar__link">Courses</a></li>
+        <li><a href="./dashboard.html#results" class="sidebar__link">My results</a></li>
+      </ul>
+    </aside>
+
+
+    <header class="topbar">
+      <h2 class="topbar__title">My Quizzes</h2>
+      <div class="topbar__user">
+        <span class="role-pill" id="userRole">Student</span>
+        <span id="userName">—</span>
+        <button class="btn btn-secondary btn-sm" id="logoutBtn">Log out</button>
+      </div>
+    </header>
+
+    <main class="main">
+      <div id="pageAlert"></div>
+      <section class="stat-grid">
+        <div class="stat-card">
+          <div class="stat-card__value" id="statCourses">—</div>
+          <div class="stat-card__label">Courses enrolled</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__value" id="statAvailable">—</div>
+          <div class="stat-card__label">Quizzes available</div>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card__header">
+          <h3 style="margin:0;">Available quizzes</h3>
+        </div>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Course</th>
+                <th>Quiz</th>
+                <th class="num">Duration (min)</th>
+                <th class="num">Questions</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="availableBody">
+
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card" id="results">
+        <div class="card__header">
+          <h3 style="margin:0;">My results</h3>
+        </div>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Course</th>
+                <th>Quiz</th>
+                <th>Submitted</th>
+                <th class="num">Score</th>
+              </tr>
+            </thead>
+            <tbody id="resultsBody">
+
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <div class="modal-overlay is-hidden" id="startModal" role="dialog" aria-modal="true"
+        aria-labelledby="startModalTitle">
+        <div class="modal-box modal-box--form">
+          <h3 class="modal-box__title" id="startModalTitle">Start this quiz?</h3>
+          <p class="modal-box__subtitle" id="startModalSub">—</p>
+          <p class="note">The timer starts the moment you begin and keeps running if you close the page. You can attempt
+            each quiz only once.</p>
+          <div class="form-actions">
+            <button class="btn btn-primary" id="startModalOk">Start quiz</button>
+            <button type="button" class="btn btn-secondary" id="startModalCancel">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script type="module" src="../../js/auth.js"></script>
+  <script type="module" src="../../js/pages/student/dashboard.js"></script>
+</body>
+
+</html>

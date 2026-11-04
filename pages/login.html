@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login — Quiz Management System</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/quiz.css" />
+</head>
+
+<body>
+  <div class="login-screen">
+    <form class="login-card" id="loginForm">
+      <div class="login-card__brand">Quiz<span>MS</span></div>
+      <p class="login-card__subtitle">Sign in to access your account</p>
+      <div id="loginAlert"></div>
+      <div class="field"><label for="userID">User ID</label><input type="text" id="userID" autocomplete="username"
+          required /></div>
+      <div class="field" style="margin-top:14px;"><label for="password">Password</label><input type="password"
+          id="password" autocomplete="current-password" required /></div>
+      <div class="field" style="margin-top:14px;">
+        <label for="userRole">Role</label>
+        <select name="userRole" id="userRole" required>
+          <option value="" selected disabled>Select role</option>
+          <option value="hod">Head of Department</option>
+          <option value="admin">Database Administrator</option>
+          <option value="instructor">Instructor</option>
+          <option value="student">Student</option>
+        </select>
+      </div>
+      <div class="form-actions"><button type="submit" class="btn btn-primary"
+          style="width:100%;justify-content:center;">Log in</button></div>
+    </form>
+  </div>
+  <script type="module" src="../js/pages/login.js"></script>
+</body>
+
+</html>
