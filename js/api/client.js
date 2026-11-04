@@ -1,5 +1,5 @@
 
-const origin = 'http://127.0.0.1:5000';
+const origin = 'https://quiz-management-system-backend-w1cw.onrender.com';
 
 async function apiFetch(path, options) {
 
